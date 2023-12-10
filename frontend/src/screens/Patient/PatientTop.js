@@ -15,7 +15,6 @@ const PatientTop = () => {
                 <Tab.Screen name="Patient" component={Patient} />
                 <Tab.Screen name="Admit-Time" component={PatientAdmitTime} />
                 <Tab.Screen name="Add-Patient" component={AddPatient} />
-                {/* <Tab.Screen name="Logout" component={Logout} /> */}
             </Tab.Navigator>
         </>
     )

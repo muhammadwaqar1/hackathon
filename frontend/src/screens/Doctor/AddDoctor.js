@@ -1,10 +1,9 @@
-import { Alert, Button, Image, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native'
+import { Alert, ScrollView, StyleSheet, Text, View } from 'react-native'
 import React, { useState } from 'react'
-import icon from '../../assets/arrow.png'
 import { TextInput } from 'react-native'
 import axios from 'axios'
 
-const initialState = { doctorName: "",doctorDate: "", doctorSpecialization: "", doctorContact: "", doctorSchedule: "" }
+const initialState = { doctorName: "", doctorDate: "", doctorSpecialization: "", doctorContact: "", doctorSchedule: "" }
 
 const AddDoctor = ({ navigation }) => {
 
@@ -17,7 +16,7 @@ const AddDoctor = ({ navigation }) => {
     console.log("doctor data : ", state)
 
     const addDoctor = () => {
-        let { doctorName,doctorDate, doctorSpecialization, doctorContact, doctorSchedule } = state
+        let { doctorName, doctorDate, doctorSpecialization, doctorContact, doctorSchedule } = state
 
         if (!doctorName) {
             return Alert.alert("Please enter Doctor Name correctly")
@@ -50,8 +49,8 @@ const AddDoctor = ({ navigation }) => {
     }
 
     return (
-        <View style={{flex:1, backgroundColor:'white'}}>
-        
+        <View style={{ flex: 1, backgroundColor: 'white' }}>
+
             <ScrollView>
                 <Text style={styles.topHeading}>Add Doctor</Text>
                 <View style={styles.container2}>
@@ -67,15 +66,9 @@ const AddDoctor = ({ navigation }) => {
 
                     <Text style={styles.orContinue}>Doctor Contact</Text>
                     <TextInput style={styles.inputField} value={state.doctorContact} onChangeText={val => handleChange("doctorContact", val)} placeholder='Doctor Contact' />
-                    
+
                     <Text style={styles.orContinue}>Date</Text>
                     <TextInput style={styles.inputField} value={state.doctorDate} onChangeText={val => handleChange("doctorDate", val)} placeholder='Doctor Free Date' />
-
-                    {/* <View style={{ display: 'flex', textAlign: 'center', flexDirection: 'row', top: 20, }}>
-                        <Text style={styles.termPolicy}>I have read the </Text>
-                        <Text style={styles.termPolicy2}>Terms Of Service </Text>
-                    </View> */}
-
                     <Text style={styles.button} onPress={addDoctor} >
                         Add Doctor-Data
                     </Text>
@@ -105,7 +98,7 @@ const styles = StyleSheet.create({
         fontSize: 30,
         fontWeight: 'bold',
         color: 'black',
-        top:30,
+        top: 30,
         textAlign: 'center',
     },
     icon: {
@@ -118,7 +111,7 @@ const styles = StyleSheet.create({
         fontSize: 15,
         marginHorizontal: 10,
         marginVertical: 9,
-        top:30,
+        top: 30,
 
     },
     orContinue2: {
@@ -156,7 +149,7 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderRadius: 31,
         padding: 15,
-        top:30,
+        top: 30,
     },
     inputField2: {
         borderColor: 'black',
@@ -178,7 +171,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         color: 'white',
         fontSize: 20,
-        marginTop:60,
+        marginTop: 60,
         borderRadius: 30,
         padding: 15,
     },

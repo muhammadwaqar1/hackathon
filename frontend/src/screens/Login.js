@@ -4,18 +4,9 @@ import icon from '../../assets/arrow.png'
 import { TextInput } from 'react-native'
 import axios from 'axios'
 import { jwtDecode } from 'jwt-decode'
-// import AsyncStorage from '@react-native-async-storage/async-storage';
-// import auth from '@react-native-firebase/auth';
-// import useFishStore from '../../../store';
-// import { useAuthContext } from '../contexts/AuthContext';
-
 const initialState = { email: "", password: "" }
 
 const Login = ({ navigation }) => {
-
-    // const {readUserProfile} = useAuthContext()
-
-    // const { addUser }=useFishStore()
 
     const [state, setState] = useState(initialState)
 
@@ -51,28 +42,6 @@ const Login = ({ navigation }) => {
                 console.log("Error In Login Function : ", error.message);
             });
 
-
-        // auth()
-        //     .signInWithEmailAndPassword(email, password)
-        //     .then((userCredential) => {
-        //         user = userCredential.user;
-        //         console.log("login user", user)
-        //         // readUserProfile(user)
-        //         addUser(user)
-        //         console.log('User account signed in!');
-        //         navigation.navigate("TabNavigation")
-        //     })
-        //     .catch(error => {
-        //         if (error.code === 'auth/invalid-email') {
-        //             Alert.alert("That email address is invalid!")
-        //             console.log('That email address is invalid!');
-        //         }
-        //         Alert.alert("Login Error", error)
-        //         console.error("error => ", error);
-        //     });
-
-
-        console.log("Full Login Data", state)
     }
 
     const onPressHandler = () => {

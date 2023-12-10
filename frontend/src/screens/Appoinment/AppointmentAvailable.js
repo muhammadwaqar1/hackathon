@@ -2,19 +2,17 @@ import { StyleSheet, Text, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 
-const PatientAdmitTime = () => {
-
+const AppointmentAvailable = () => {
 
     const [productsData, setProductsData] = useState([]);
     const [state, setState] = useState([]);
 
     useEffect(() => {
         axios
-            .get("http://192.168.233.83:8000/patients")
+            .get("http://192.168.233.83:8000/appointments")
             .then((response) => {
                 console.log("response : ", response.data);
                 setProductsData(response.data);
-                setState(response.data)
 
             })
             .catch((error) => {
@@ -22,31 +20,25 @@ const PatientAdmitTime = () => {
             });
     }, []);
 
-
-
     return (
         <View style={styles.container}>
-            <View style={{ flex: 1,top:100, justifyContent: 'center' }}>
-                <Text style={{ fontSize: 30, color: 'black', fontWeight: 'bold', textAlign: 'center' }}>Patient-Admit-Time ({productsData.length})</Text>
+            <View style={{ flex: 1, justifyContent: 'center' }}>
+                <Text style={{ fontSize: 25, marginTop: 50, color: 'black', fontWeight: 'bold', textAlign: 'center', top: 40, }}>Available/UnAvailable ({productsData.length})</Text>
             </View>
-            <View style={{ flex: 7, top:50, }}>
+            <View style={{ flex: 7, top: 50, }}>
                 <View style={styles.table}>
                     {/* Table Header */}
                     <View style={styles.tableRow}>
-                        <Text style={styles.headerCell}>Name</Text>
-                        <Text style={styles.headerCell}>Date</Text>
-                        <Text style={styles.headerCell}>Time</Text>
-                        {/* <Text style={styles.headerCell}>Colour</Text>
-                        <Text style={styles.headerCell}>Price</Text> */}
-                        {/* <Text style={styles.headerCell}>Delete</Text> */}
+                        <Text style={styles.headerCell}>Doctor_Id</Text>
+                        <Text style={styles.headerCell}>Patient_Id</Text>
+                        <Text style={styles.headerCell}>Option</Text>
                     </View>
 
                     {productsData.map((product, i) => (
                         <View key={i + 1} style={styles.tableRow}>
-                            {/* <Text style={styles.tableCell}>{i + 1}</Text> */}
-                            <Text style={{ padding: 12,left:30, alignItems: 'center', flex: 1, fontWeight: 'bold', textDecorationLine: 'underline' }} >{product.patientName}</Text>
-                            <Text style={styles.tableCell}>{product.date}</Text>
-                            <Text style={styles.tableCell}>{product.time}</Text>
+                            <Text style={styles.tableCell}>{product.doctorRandomId}</Text>
+                            <Text style={{ padding: 12, left: 10, alignItems: 'center', flex: 1, fontWeight: 'bold', textDecorationLine: 'underline' }} >{product.doctorRandomId}</Text>
+                            <Text style={styles.tableCell}>{product.available ? product.available : "unavailable"}</Text>
                         </View>
                     ))}
                 </View>
@@ -55,7 +47,7 @@ const PatientAdmitTime = () => {
     )
 }
 
-export default PatientAdmitTime
+export default AppointmentAvailable
 
 const styles = StyleSheet.create({
     container: {
@@ -71,7 +63,7 @@ const styles = StyleSheet.create({
     },
     tableRow: {
         flexDirection: 'row',
-        justifyContent:'center',
+        justifyContent: 'center',
         borderBottomWidth: 1,
         borderColor: '#ddd',
     },
@@ -80,15 +72,12 @@ const styles = StyleSheet.create({
         padding: 8,
         fontWeight: 'bold',
         textAlign: 'center',
-        justifyContent:'center'
+        justifyContent: 'center'
     },
     tableCell: {
         flex: 1,
-        fontSize:13,
         padding: 16,
-        alignContent:'center',
+        alignContent: 'center',
         textAlign: 'center',
-        // borderWidth:1,
-        // borderColor:'white'
     },
 })

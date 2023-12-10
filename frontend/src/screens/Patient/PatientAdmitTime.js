@@ -2,58 +2,46 @@ import { StyleSheet, Text, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 
-const Doctor = () => {
-
+const PatientAdmitTime = () => {
 
     const [productsData, setProductsData] = useState([]);
     const [state, setState] = useState([]);
 
     useEffect(() => {
         axios
-            .get("http://192.168.233.83:8000/doctors")
+            .get("http://192.168.233.83:8000/patients")
             .then((response) => {
                 console.log("response : ", response.data);
                 setProductsData(response.data);
-                const fullData = response.data;
-                setState(fullData)
+                setState(response.data)
 
             })
             .catch((error) => {
                 console.error("Error in get products in contact: ", error);
             });
     }, []);
-    const handleDeleteDoctor = (userId) => {
-        axios
-            .delete("http://192.168.233.83:8000/deleteDoctor/" + userId)
-            .then((response) => {
-                console.log("response : ", response);
-                const updateData = productsData.filter((user) => user._id != userId);
-                setProductsData(updateData);
-                console.log("product deleted successfull")
-            })
-            .catch((error) => {
-                console.error("Error in product delete : ", error);
-            });
-    };
+
+
+
     return (
         <View style={styles.container}>
-            <View style={{ flex: 1, top: 60, justifyContent: 'center' }}>
-                <Text style={{ fontSize: 30, color: 'black', fontWeight: 'bold', textAlign: 'center', top: 40, }}>All-Doctors ({productsData.length})</Text>
+            <View style={{ flex: 1, top: 100, justifyContent: 'center' }}>
+                <Text style={{ fontSize: 30, color: 'black', fontWeight: 'bold', textAlign: 'center' }}>Patient-Admit-Time ({productsData.length})</Text>
             </View>
             <View style={{ flex: 7, top: 50, }}>
                 <View style={styles.table}>
+                    {/* Table Header */}
                     <View style={styles.tableRow}>
-                        <Text style={styles.headerCell}>#</Text>
                         <Text style={styles.headerCell}>Name</Text>
-                        <Text style={styles.headerCell}>Specialization</Text>
-                        <Text style={styles.headerCell}>Delete</Text>
+                        <Text style={styles.headerCell}>Date</Text>
+                        <Text style={styles.headerCell}>Time</Text>
                     </View>
+
                     {productsData.map((product, i) => (
                         <View key={i + 1} style={styles.tableRow}>
-                            <Text style={styles.tableCell}>{i + 1}</Text>
-                            <Text style={{ padding: 12, left: 30, alignItems: 'center', flex: 1, fontWeight: 'bold', textDecorationLine: 'underline' }} >{product.doctorName}</Text>
-                            <Text style={styles.tableCell}>{product.doctorSpecialization}</Text>
-                            <Text style={{ padding: 12, alignItems: 'center', color: 'red', left: 12, flex: 1, fontWeight: 'bold' }} onPress={() => handleDeleteDoctor(product._id)}>Del</Text>
+                            <Text style={{ padding: 12, left: 30, alignItems: 'center', flex: 1, fontWeight: 'bold', textDecorationLine: 'underline' }} >{product.patientName}</Text>
+                            <Text style={styles.tableCell}>{product.date}</Text>
+                            <Text style={styles.tableCell}>{product.time}</Text>
                         </View>
                     ))}
                 </View>
@@ -62,7 +50,7 @@ const Doctor = () => {
     )
 }
 
-export default Doctor
+export default PatientAdmitTime
 
 const styles = StyleSheet.create({
     container: {
@@ -71,7 +59,7 @@ const styles = StyleSheet.create({
     },
     table: {
         flex: 1,
-        margin: 12,
+        margin: 16,
         borderWidth: 1,
         borderColor: '#ddd',
         top: 50,
@@ -91,10 +79,9 @@ const styles = StyleSheet.create({
     },
     tableCell: {
         flex: 1,
+        fontSize: 13,
         padding: 16,
         alignContent: 'center',
         textAlign: 'center',
-        // borderWidth:1,
-        // borderColor:'white'
     },
 })

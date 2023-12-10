@@ -1,7 +1,7 @@
 import { View, Text } from 'react-native'
 import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import SplashScreen from './SplashScreen'
+import SplashScreen from '../../screens/Splash/SplashScreen'
 import TabNavigation from './TabNavigation'
 const Stack = createNativeStackNavigator()
 const index = () => {

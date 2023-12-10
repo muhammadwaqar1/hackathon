@@ -2,7 +2,7 @@ import { StyleSheet, Text, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 
-const Patient = () => {
+const DoctorInformation = () => {
 
 
     const [productsData, setProductsData] = useState([]);
@@ -10,22 +10,21 @@ const Patient = () => {
 
     useEffect(() => {
         axios
-            .get("http://192.168.233.83:8000/patients")
+            .get("http://192.168.0.107:8000/doctors")
             .then((response) => {
                 console.log("response : ", response.data);
                 setProductsData(response.data);
-                setState(response.data)
+                const fullData = response.data;
+                setState(fullData)
 
             })
             .catch((error) => {
-                console.error("Error in get patients: ", error);
+                console.error("Error in get products in contact: ", error);
             });
     }, []);
-
-
-    const handleDeletePatient = (userId) => {
+    const handleDeleteDoctor = (userId) => {
         axios
-            .delete("http://192.168.233.83:8000/deletePatient/" + userId)
+            .delete("http://192.168.0.107:8000/deleteDoctor/" + userId)
             .then((response) => {
                 console.log("response : ", response);
                 const updateData = productsData.filter((user) => user._id != userId);
@@ -36,28 +35,25 @@ const Patient = () => {
                 console.error("Error in product delete : ", error);
             });
     };
-
     return (
         <View style={styles.container}>
-            <View style={{ flex: 1, top: 100, justifyContent: 'center' }}>
-                <Text style={{ fontSize: 30, color: 'black', fontWeight: 'bold', textAlign: 'center' }}>All-Patients ({productsData.length})</Text>
+            <View style={{ flex: 1, top: 60, justifyContent: 'center' }}>
+                <Text style={{ fontSize: 30, color: 'black', fontWeight: 'bold', textAlign: 'center', top: 40, }}>All-Doctors ({productsData.length})</Text>
             </View>
-            <View style={{ flex: 7, top: 40, }}>
+            <View style={{ flex: 7, top: 50, }}>
                 <View style={styles.table}>
-                    {/* Table Header */}
                     <View style={styles.tableRow}>
-                        <Text style={styles.headerCell}>CNIC</Text>
+                        <Text style={styles.headerCell}>#</Text>
                         <Text style={styles.headerCell}>Name</Text>
-                        <Text style={styles.headerCell}>Medical</Text>
+                        <Text style={styles.headerCell}>Specialization</Text>
                         <Text style={styles.headerCell}>Delete</Text>
                     </View>
-
-                    {productsData.map((patient, i) => (
+                    {productsData.map((product, i) => (
                         <View key={i + 1} style={styles.tableRow}>
-                            <Text style={styles.tableCell}>{patient.patientCNIC}</Text>
-                            <Text style={{ padding: 12, left: 30, alignItems: 'center', flex: 1, fontWeight: 'bold', textDecorationLine: 'underline' }} >{patient.patientName}</Text>
-                            <Text style={styles.tableCell}>{patient.patientMedical}</Text>
-                            <Text style={{ padding: 12, alignItems: 'center', color: 'red', left: 12, flex: 1, fontWeight: 'bold' }} onPress={() => handleDeletePatient(patient._id)}>Del</Text>
+                            <Text style={styles.tableCell}>{i + 1}</Text>
+                            <Text style={{ padding: 12, left: 30, alignItems: 'center', flex: 1, fontWeight: 'bold', textDecorationLine: 'underline' }} >{product.doctorName}</Text>
+                            <Text style={styles.tableCell}>{product.doctorSpecialization}</Text>
+                            <Text style={{ padding: 12, alignItems: 'center', color: 'red', left: 12, flex: 1, fontWeight: 'bold' }} onPress={() => handleDeleteDoctor(product._id)}>Del</Text>
                         </View>
                     ))}
                 </View>
@@ -66,7 +62,7 @@ const Patient = () => {
     )
 }
 
-export default Patient
+export default DoctorInformation
 
 const styles = StyleSheet.create({
     container: {
@@ -75,7 +71,7 @@ const styles = StyleSheet.create({
     },
     table: {
         flex: 1,
-        margin: 16,
+        margin: 12,
         borderWidth: 1,
         borderColor: '#ddd',
         top: 50,
@@ -96,10 +92,7 @@ const styles = StyleSheet.create({
     tableCell: {
         flex: 1,
         padding: 16,
-        fontSize: 12,
         alignContent: 'center',
         textAlign: 'center',
-        // borderWidth:1,
-        // borderColor:'white'
     },
 })

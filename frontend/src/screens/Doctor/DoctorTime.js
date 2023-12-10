@@ -3,8 +3,6 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 
 const DoctorTime = () => {
-
-
     const [productsData, setProductsData] = useState([]);
     const [state, setState] = useState([]);
 
@@ -26,30 +24,23 @@ const DoctorTime = () => {
 
     return (
         <View style={styles.container}>
-            <View style={{ flex: 1,top:100, justifyContent: 'center' }}>
+            <View style={{ flex: 1, top: 100, justifyContent: 'center' }}>
                 <Text style={{ fontSize: 30, color: 'black', fontWeight: 'bold', textAlign: 'center' }}>Doctor Date ({productsData.length})</Text>
             </View>
-            <View style={{ flex: 7, top:40 }}>
+            <View style={{ flex: 7, top: 40 }}>
                 <View style={styles.table}>
                     {/* Table Header */}
                     <View style={styles.tableRow}>
                         <Text style={styles.headerCell}>Name</Text>
                         <Text style={styles.headerCell}>Date</Text>
                         <Text style={styles.headerCell}>Time</Text>
-                        {/* <Text style={styles.headerCell}>Colour</Text>
-                        <Text style={styles.headerCell}>Price</Text> */}
-                        {/* <Text style={styles.headerCell}>Delete</Text> */}
                     </View>
 
                     {productsData.map((product, i) => (
                         <View key={i + 1} style={styles.tableRow}>
-                            {/* <Text style={styles.tableCell}>{i + 1}</Text> */}
-                            <Text style={{ padding: 12,left:30, alignItems: 'center', flex: 1, fontWeight: 'bold', textDecorationLine: 'underline' }} >{product.doctorName}</Text>
+                            <Text style={{ padding: 12, left: 30, alignItems: 'center', flex: 1, fontWeight: 'bold', textDecorationLine: 'underline' }} >{product.doctorName}</Text>
                             <Text style={styles.tableCell}>{product.date}</Text>
                             <Text style={styles.tableCell}>{product.time}</Text>
-                            {/* <Text style={styles.tableCell}>{product.doctorSchedule}</Text>
-                            <Text style={styles.tableCell}>{product.doctorContact}</Text> */}
-                            {/* <Text style={{ padding: 4, alignItems: 'center', color: 'red', flex: 1, fontWeight: 'bold' }} onPress={() => handleDeleteProduct(product._id)}>Del</Text> */}
                         </View>
                     ))}
                 </View>
@@ -74,7 +65,7 @@ const styles = StyleSheet.create({
     },
     tableRow: {
         flexDirection: 'row',
-        justifyContent:'center',
+        justifyContent: 'center',
         borderBottomWidth: 1,
         borderColor: '#ddd',
     },
@@ -83,14 +74,12 @@ const styles = StyleSheet.create({
         padding: 8,
         fontWeight: 'bold',
         textAlign: 'center',
-        justifyContent:'center'
+        justifyContent: 'center'
     },
     tableCell: {
         flex: 1,
         padding: 16,
-        alignContent:'center',
+        alignContent: 'center',
         textAlign: 'center',
-        // borderWidth:1,
-        // borderColor:'white'
     },
 })

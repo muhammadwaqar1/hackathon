@@ -2,7 +2,7 @@ import { StyleSheet, Text, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 
-const Appointment = ({navigation}) => {
+const Appointment = ({ navigation }) => {
 
 
     const [productsData, setProductsData] = useState([]);
@@ -21,11 +21,6 @@ const Appointment = ({navigation}) => {
                 console.error("Error in get products in contact: ", error);
             });
     }, []);
-
-
-    // const handleNavigate = () => {
-    //     navigation.navigate("Add-Appointment");
-    // };
 
     const handleDeleteAppointment = (userId) => {
         axios
@@ -48,28 +43,20 @@ const Appointment = ({navigation}) => {
             </View>
             <View style={{ flex: 7, top: 40, }}>
                 <View style={styles.table}>
-                    {/* Table Header */}
                     <View style={styles.tableRow}>
                         <Text style={styles.headerCell}>Date</Text>
                         <Text style={styles.headerCell}>Time</Text>
                         <Text style={styles.headerCell}>Note</Text>
-                        {/* <Text style={styles.headerCell}>Colour</Text>
-                        <Text style={styles.headerCell}>Price</Text> */}
-                        {/* <Text style={styles.headerCell}>Delete</Text> */}
                     </View>
 
                     {productsData.map((product, i) => (
                         <View key={i + 1} style={styles.tableRow}>
                             <Text style={styles.tableCell}>{product.originalDate}</Text>
-                            <Text style={{ paddingVertical:20,paddingHorizontal:14, left: 10, alignItems: 'center', flex: 1, fontWeight: 'bold', textDecorationLine: 'underline' }} >{product.originalTime}</Text>
+                            <Text style={{ paddingVertical: 20, paddingHorizontal: 14, left: 10, alignItems: 'center', flex: 1, fontWeight: 'bold', textDecorationLine: 'underline' }} >{product.originalTime}</Text>
                             <Text style={styles.tableCell}>{product.appointmentNotes}</Text>
-                            {/* <Text style={styles.tableCell}>{product.doctorSchedule}</Text>
-                            <Text style={styles.tableCell}>{product.doctorContact}</Text> */}
-                            {/* <Text style={{ padding: 4, alignItems: 'center', color: 'red', flex: 1, fontWeight: 'bold' }} onPress={() => handleDeleteProduct(product._id)}>Del</Text> */}
+
                         </View>
                     ))}
-                    {/* dfkj
-                    <Text style={styles.button} onPress={handleNavigate}>Go To Add Appointment</Text> */}
                 </View>
             </View>
         </View>
@@ -108,8 +95,6 @@ const styles = StyleSheet.create({
         padding: 16,
         alignContent: 'center',
         textAlign: 'center',
-        // borderWidth:1,
-        // borderColor:'white'
     },
     button: {
         backgroundColor: '#1e90ff',

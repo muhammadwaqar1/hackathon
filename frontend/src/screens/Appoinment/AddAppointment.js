@@ -1,10 +1,9 @@
-import { Alert, Button, Image, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native'
+import { Alert, ScrollView, StyleSheet, Text, View } from 'react-native'
 import React, { useState } from 'react'
-import icon from '../../assets/arrow.png'
 import { TextInput } from 'react-native'
 import axios from 'axios'
 
-const initialState = { appointmentNotes: "",originalDate: "", originalTime: "", }
+const initialState = { appointmentNotes: "", originalDate: "", originalTime: "", }
 
 const AddAppointment = ({ navigation }) => {
 
@@ -17,7 +16,7 @@ const AddAppointment = ({ navigation }) => {
     console.log("doctor data : ", state)
 
     const addAppointment = () => {
-        let {appointmentNotes ,originalDate, originalTime } = state
+        let { appointmentNotes, originalDate, originalTime } = state
 
         if (!appointmentNotes) {
             return Alert.alert("Please enter Appointment Note Name correctly")
@@ -43,18 +42,14 @@ const AddAppointment = ({ navigation }) => {
     }
 
     return (
-        <View style={{flex:1, backgroundColor:'white'}}>
-        
-            <ScrollView style={{top:90,marginVertical:30, }}>
+        <View style={{ flex: 1, backgroundColor: 'white' }}>
+
+            <ScrollView style={{ top: 90, marginVertical: 30, }}>
                 <Text style={styles.topHeading}>Add Appointment</Text>
                 <View style={styles.container2}>
-
-                    {/* <Text style={styles.orContinue}>Appointment Note</Text>
-                    <TextInput style={styles.inputField} value={state.appointmentNotes} onChangeText={val => handleChange("appointmentNotes", val)} placeholder='Doctor Name' /> */}
-
                     <Text style={styles.orContinue}>Note</Text>
                     <TextInput style={styles.inputField} value={state.appointmentNotes} onChangeText={val => handleChange("appointmentNotes", val)} placeholder='Appointment Note' />
-                    
+
                     <Text style={styles.orContinue}>Date</Text>
                     <TextInput style={styles.inputField} value={state.originalDate} onChangeText={val => handleChange("originalDate", val)} placeholder='Appointment Date' />
 
@@ -85,11 +80,9 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     container2: {
-        // flex: 2,
         marginHorizontal: 25,
     },
     container3: {
-        // flex: 2,
     },
     topHeading: {
         fontSize: 30,

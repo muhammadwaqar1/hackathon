@@ -1,5 +1,4 @@
-import { View, Text } from 'react-native'
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import Appointment from './Appointment';
 import AppointmentAvailable from './AppointmentAvailable';

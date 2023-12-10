@@ -5,9 +5,12 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import FontAwesome6 from 'react-native-vector-icons/FontAwesome6';
 import Foundation from 'react-native-vector-icons/Foundation';
 import Fontisto from 'react-native-vector-icons/Fontisto';
-import DoctorTop from './DoctorTop';
-import PatientTop from './PatientTop';
-import AppointmentTop from './AppointmentTop';
+import DoctorTop from '../../screens/Doctor/DoctorTop';
+// import DoctorTop from './DoctorTop';
+// import PatientTop from './PatientTop';
+// import AppointmentTop from './AppointmentTop';
+import AppointmentTop from '../../screens/Appoinment/AppointmentTop';
+import PatientTop from "../../screens/Patient/PatientTop"
 
 const Tab = createBottomTabNavigator();
 const TabNavigation = () => {

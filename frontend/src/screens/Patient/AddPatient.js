@@ -1,6 +1,5 @@
-import { Alert, Button, Image, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native'
+import { Alert, ScrollView, StyleSheet, Text, View } from 'react-native'
 import React, { useState } from 'react'
-import icon from '../../assets/arrow.png'
 import { TextInput } from 'react-native'
 import axios from 'axios'
 
@@ -48,35 +47,35 @@ const AddPatient = ({ navigation }) => {
 
     return (
 
-            <ScrollView style={styles.container}>
-                <Text style={styles.topHeading}>Enter Patient Data</Text>
-                <View style={styles.container2}>
+        <ScrollView style={styles.container}>
+            <Text style={styles.topHeading}>Enter Patient Data</Text>
+            <View style={styles.container2}>
 
-                    <Text style={styles.orContinue}>Patient Name</Text>
-                    <TextInput style={styles.inputField} value={state.patientName} onChangeText={val => handleChange("patientName", val)} placeholder='Enter Patient Name' />
+                <Text style={styles.orContinue}>Patient Name</Text>
+                <TextInput style={styles.inputField} value={state.patientName} onChangeText={val => handleChange("patientName", val)} placeholder='Enter Patient Name' />
 
-                    <Text style={styles.orContinue}>Patient CNIC</Text>
-                    <TextInput style={styles.inputField} value={state.patientCNIC} onChangeText={val => handleChange("patientCNIC", val)} placeholder='Enter Patient CNIC' />
+                <Text style={styles.orContinue}>Patient CNIC</Text>
+                <TextInput style={styles.inputField} value={state.patientCNIC} onChangeText={val => handleChange("patientCNIC", val)} placeholder='Enter Patient CNIC' />
 
-                    <Text style={styles.orContinue}>Patient Contact</Text>
-                    <TextInput style={styles.inputField} value={state.patientContact} onChangeText={val => handleChange("patientContact", val)} placeholder='Enter Patient Contact' />
+                <Text style={styles.orContinue}>Patient Contact</Text>
+                <TextInput style={styles.inputField} value={state.patientContact} onChangeText={val => handleChange("patientContact", val)} placeholder='Enter Patient Contact' />
 
-                    <Text style={styles.orContinue}>Patient Medical</Text>
-                    <TextInput style={styles.inputField} value={state.patientMedical} onChangeText={val => handleChange("patientMedical", val)} placeholder='Enter Patient Medical' />
+                <Text style={styles.orContinue}>Patient Medical</Text>
+                <TextInput style={styles.inputField} value={state.patientMedical} onChangeText={val => handleChange("patientMedical", val)} placeholder='Enter Patient Medical' />
 
-                    <View style={{ display: 'flex', textAlign: 'center', flexDirection: 'row', top: 20, }}>
-                        <Text style={styles.termPolicy}>I have read the </Text>
-                        <Text style={styles.termPolicy2}>Terms Of Service </Text>
-                    </View>
-
-                    <Text style={styles.button} onPress={addPatient} >
-                        Add Patient-Data
-                    </Text>
-
+                <View style={{ display: 'flex', textAlign: 'center', flexDirection: 'row', top: 20, }}>
+                    <Text style={styles.termPolicy}>I have read the </Text>
+                    <Text style={styles.termPolicy2}>Terms Of Service </Text>
                 </View>
-                <View style={styles.container3}>
-                </View>
-            </ScrollView >
+
+                <Text style={styles.button} onPress={addPatient} >
+                    Add Patient-Data
+                </Text>
+
+            </View>
+            <View style={styles.container3}>
+            </View>
+        </ScrollView >
     )
 }
 
@@ -85,8 +84,7 @@ export default AddPatient
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor:'white',
-        // backgroundColor:'black'
+        backgroundColor: 'white',
     },
     container2: {
         flex: 2,
@@ -99,7 +97,7 @@ const styles = StyleSheet.create({
         fontSize: 30,
         fontWeight: 'bold',
         color: 'black',
-        marginTop:70,
+        marginTop: 70,
         textAlign: 'center',
     },
     icon: {
